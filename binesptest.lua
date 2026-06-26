@@ -4,7 +4,7 @@ local Bespt = Instance.new("Highlight")
 Bespt.Name = "Esp9"
 Bespt.FillTransparency = 1
 Bespt.OutlineTransparency = 0
-Bepst.OutlineColor = Color3.fromRGB(255, 255, 255)
+
 
 local binesp = true
 RunService.RenderStepped:Connect(function(dt)
