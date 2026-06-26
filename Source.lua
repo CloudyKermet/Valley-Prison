@@ -20,9 +20,15 @@ Discord = {
    }
 })
 
+local vesp = Instance.new("Highlight")
+highlight.Name = "ESP"
+highlight.FillTransparency = 1
+highlight.OutlineTransparency = 0
+highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+
 RunService.RenderStepped:Connect(function(dt)
 if espon then
-
+for _, plrs
 end
 end)
 
