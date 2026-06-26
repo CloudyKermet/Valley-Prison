@@ -6,8 +6,13 @@ vesp.OutlineColor = Color3.fromRGB(255, 255, 255)
 
 for _, bin in ipairs(workspace.Map.Functional.Storages.Searchable:GetChildren()) do
 if bin.Name == "Bin" then
+        for _, prox in ipairs(bin:GetChildren()) do
+if prox.Name == "Proximity" then
+local prompt = prox:FindFirstChild("ProximityPrompt")
+                prompt.HoldDuration = 0.01
+            end
+        end
     local hl = vesp:Clone()
     hl.Parent = bin
-bin.Proximity.ProximityPrompt.HoldDuration = 0.01
   end
 end
