@@ -28,7 +28,20 @@ highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
 
 RunService.RenderStepped:Connect(function(dt)
 if espon then
-for _, plrs
+    for _, plr in ipairs(game.Players:GetPlayers()) do
+        if plr.Character and not plr.Character:FindFirstChild("ESP") then
+            local hl = vesp:Clone()
+            hl.Parent = plr.Character
+end
+end
+end
+   else
+      for _, plr2 in ipairs(game.Players:GetPlayers()) do
+        if plr2.Character and plr2.Character:FindFirstChild("ESP") then
+         plr2.Character:FindFirstChild("ESP"):Destroy()
+end
+end
+end
 end
 end)
 
