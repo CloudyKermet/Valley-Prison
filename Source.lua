@@ -20,6 +20,7 @@ Discord = {
    }
 })
 
+local espon = true
 local vesp = Instance.new("Highlight")
 vesp.Name = "ESP"
 vesp.FillTransparency = 1
