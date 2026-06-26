@@ -20,8 +20,6 @@ Discord = {
    }
 })
 
-local espon = true
-local RunService = game:GetService("RunService")
 local vesp = Instance.new("Highlight")
 vesp.Name = "ESP"
 vesp.FillTransparency = 1
