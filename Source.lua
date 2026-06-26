@@ -21,28 +21,26 @@ Discord = {
 })
 
 local vesp = Instance.new("Highlight")
-highlight.Name = "ESP"
-highlight.FillTransparency = 1
-highlight.OutlineTransparency = 0
-highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+vesp.Name = "ESP"
+vesp.FillTransparency = 1
+vesp.OutlineTransparency = 0
+vesp.OutlineColor = Color3.fromRGB(255, 255, 255)
 
 RunService.RenderStepped:Connect(function(dt)
-if espon then
-    for _, plr in ipairs(game.Players:GetPlayers()) do
-        if plr.Character and not plr.Character:FindFirstChild("ESP") then
-            local hl = vesp:Clone()
-            hl.Parent = plr.Character
-end
-end
-end
-   else
-      for _, plr2 in ipairs(game.Players:GetPlayers()) do
-        if plr2.Character and plr2.Character:FindFirstChild("ESP") then
-         plr2.Character:FindFirstChild("ESP"):Destroy()
-end
-end
-end
-end
+    if espon then
+        for _, plr in ipairs(game.Players:GetPlayers()) do
+            if plr.Character and not plr.Character:FindFirstChild("Hilight") then
+                local hl = vesp:Clone()
+                hl.Parent = plr.Character
+            end
+        end
+    else
+        for _, plr2 in ipairs(game.Players:GetPlayers()) do
+            if plr2.Character and plr2.Character:FindFirstChild("ESP") then
+                plr2.Character:FindFirstChild("ESP"):Destroy()
+            end
+        end
+    end
 end)
 
 local Tab1 = Window:CreateTab("Visuals", 4483362458)
