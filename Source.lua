@@ -50,7 +50,7 @@ local tgl1 = Tab1:CreateToggle({
    CurrentValue = false,
    Flag = "Toggle1",
    Callback = function(Value)
-  espon = not espon
+  espon = Value
    end,
 })
 
