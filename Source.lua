@@ -25,7 +25,7 @@ local vesp = Instance.new("Highlight")
 vesp.Name = "ESP"
 vesp.FillTransparency = 1
 vesp.OutlineTransparency = 0
-vesp.OutlineColor = Color3.fromRGB(255, 255, 255)
+vesp.OutlineColor = Color3.fromRGB(128, 128, 128)
 
 RunService.RenderStepped:Connect(function()
     if espon then
@@ -33,10 +33,16 @@ RunService.RenderStepped:Connect(function()
             if plr ~= player and plr.Character then
                 local humanoid = plr.Character:FindFirstChild("Humanoid")
                 if humanoid and humanoid.Health > 0 and not plr.Character:FindFirstChild("ESP") then
+                    
+                    -- Team Check: Skip own team when enabled
+                    if teamcheck and plr.Team == player.Team then
+                        continue
+                    end
+                    
                     local hl = vesp:Clone()
                     hl.Adornee = plr.Character
                     
-                    -- Team Colors
+                    -- Team Colors on Outline
                     if teamcheck and plr.Team then
                         local teamName = plr.Team.Name
                         if teamName == "State Police" or teamName == "Department of Corrections" then
@@ -47,10 +53,10 @@ RunService.RenderStepped:Connect(function()
                         elseif teamName == "Escapee" then
                             hl.OutlineColor = Color3.fromRGB(255, 0, 0)        -- Red
                         else
-                            hl.OutlineColor = Color3.fromRGB(255, 255, 100)    -- Default
+                            hl.OutlineColor = Color3.fromRGB(128, 128, 128)    -- Default Grey
                         end
                     else
-                        hl.OutlineColor = Color3.fromRGB(255, 100, 100)        -- Red if teamcheck off
+                        hl.OutlineColor = Color3.fromRGB(128, 128, 128)        -- Grey if teamcheck off
                     end
                     
                     hl.Parent = plr.Character
