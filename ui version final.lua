@@ -1,7 +1,8 @@
 local player = game.Players.LocalPlayer
 local RunService = game:GetService("RunService")
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
-local character = player.Character
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
 local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
 
@@ -21,9 +22,6 @@ Discord = {
 })
 
 local antitase = false  -- Toggle this to false to disable
-
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:WaitForChild("Humanoid")
 
 RunService.Heartbeat:Connect(function()
     if not antitase then return end
