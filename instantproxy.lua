@@ -10,9 +10,14 @@ if bin.Name == "Bin" then
 if prox.Name == "Proximity" then
 local prompt = prox:FindFirstChild("ProximityPrompt")
                 prompt.HoldDuration = 0.01
+                                if workspace.part:GetAttribute("Searched") == false then
+local hl = vesp:Clone()
+    hl.Parent = prox
+         else
+        prox:FindFirstChild("ESP"):Destroy()
+end
+                                 
             end
         end
-    local hl = vesp:Clone()
-    hl.Parent = bin
   end
 end
