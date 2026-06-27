@@ -11,10 +11,10 @@ if prox.Name == "Proximity" then
 local prompt = prox:FindFirstChild("ProximityPrompt")
                 prompt.HoldDuration = 0.01
                                 if workspace.part:GetAttribute("Searched") == false then
-local hl = vesp:Clone()
-    hl.Parent = prox
+    prox.transparceny = 0.3      
+                                        prox.color = color3.fromrgb(light green)
          else
-        prox:FindFirstChild("ESP"):Destroy()
+        prox.transparency = 1
 end
                                  
             end
