@@ -1,26 +1,13 @@
-local vesp = Instance.new("Highlight")
-vesp.Name = "ESP"
-vesp.FillTransparency = 1
-vesp.OutlineTransparency = 0
-vesp.OutlineColor = Color3.fromRGB(255, 255, 255)
-
-while true do
 for _, bin in ipairs(workspace.Map.Functional.Storages.Searchable:GetChildren()) do
 if bin.Name == "Bin" then
-        for _, prox in ipairs(bin:GetChildren()) do
-if prox.Name == "Proximity" then
+for _, prox in ipairs(bin:GetChildren()) do
 local prompt = prox:FindFirstChild("ProximityPrompt")
-                prompt.HoldDuration = 0.01
-                                if workspace.part:GetAttribute("Searched") == false then
-    prox.transparceny = 0.3      
-                                        prox.color = color3.fromrgb(light green)
-         else
-        prox.transparency = 1
-end
-                                 
-            end
+prompt.MaxActivationDistance = 9999
+prompt.HoldDuration = 0.01
+prompt:InputHoldBegin()
+task.wait(0.08)
+prompt:InputHoldEnd()                        
+                end
         end
-  end
 end
-        wait(0.1)
-end
+				
