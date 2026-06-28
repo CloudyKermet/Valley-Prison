@@ -42,6 +42,7 @@ local antitase = false
 local antirecoil = false
 local alwayssprint = false
 local infstamina = false
+local showropes = false
 
 RunService.Heartbeat:Connect(function()
     if antitase then
@@ -192,12 +193,22 @@ RunService.RenderStepped:Connect(function()
             end
         end
     end
+      if showropes then
+for _, rope in ipairs(workspace.Map.Functional.Ropes:GetChildren()) do
+if rope.Name == "Rope" then
+rope:FindFirstChild("Rope").Transparency = 0
+rope:FindFirstChild("Truss").CanCollide = true               
+            end
+         end
+      end
 end)
 
-local Tab1 = Window:CreateTab("Main", 4483362458)
-local Tab2 = Window:CreateTab("Aimbot", 4483362458)
+local Tab1 = Window:CreateTab("Combat", 4483362458)
+local Tab2 = Window:CreateTab("Visuals", 4483362458)
+local Tab3 = Window:CreateTab("Client", 4483362458)
+local Tab4 = Window:CreateTab("Misc", 4483362458)
 
-local tgl1 = Tab1:CreateToggle({
+local tgl1 = Tab3:CreateToggle({
    Name = "Anti Tase",
    CurrentValue = false,
    Flag = "Toggle1",
@@ -215,7 +226,7 @@ local tgl2 = Tab1:CreateToggle({
    end,
 })
 
-local tgl3 = Tab1:CreateToggle({
+local tgl3 = Tab3:CreateToggle({
    Name = "Always Sprint",
    CurrentValue = false,
    Flag = "Toggle1",
@@ -227,7 +238,7 @@ game.Players.LocalPlayer.Character:WaitForChild("Humanoid").WalkSpeed = 14
    end,
 })
 
-local tgl4 = Tab1:CreateToggle({
+local tgl4 = Tab3:CreateToggle({
    Name = "Inf Stamina",
    CurrentValue = false,
    Flag = "Toggle1",
@@ -236,7 +247,7 @@ local tgl4 = Tab1:CreateToggle({
    end,
 })
 
-local tgl5 = Tab2:CreateToggle({
+local tgl5 = Tab1:CreateToggle({
    Name = "Aimlock",
    CurrentValue = false,
    Flag = "Toggle1",
@@ -245,11 +256,20 @@ local tgl5 = Tab2:CreateToggle({
    end,
 })
 
-local tgl6 = Tab2:CreateToggle({
+local tgl6 = Tab1:CreateToggle({
    Name = "WallCheck",
    CurrentValue = false,
    Flag = "Toggle1",
    Callback = function(Value)
   wallcheck = Value
+   end,
+})
+
+local tgl7 = Tab4:CreateToggle({
+   Name = "Show Ropes",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(Value)
+  showropes = Value
    end,
 })
