@@ -5,6 +5,9 @@ local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
 local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
+firesignal(game:GetService("ReplicatedStorage").Hints.Remote.OnClientEvent, "Valley Prison Cheat Loaded (By KermetDevelopment)")
+
+
 --aimbot variables--
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
