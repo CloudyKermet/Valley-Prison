@@ -292,10 +292,10 @@ local tgl7 = Tab4:CreateToggle({
    Callback = function(Value)
   showrope = Value
          if not Value then
-for _, rope in ipairs(workspace.Map.Functional.Ropes:GetChildren()) do
+for _, rope1 in ipairs(workspace.Map.Functional.Ropes:GetChildren()) do
 if rope.Name == "Rope" then
-rope:FindFirstChild("Rope").Transparency = 1
-rope:FindFirstChild("Truss").CanCollide = false               
+rope1:FindFirstChild("Rope").Transparency = 1
+rope1:FindFirstChild("Truss").CanCollide = false               
             end
          end
       end
