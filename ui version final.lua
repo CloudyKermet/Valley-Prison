@@ -307,12 +307,13 @@ local tgl8 = Tab2:CreateToggle({
    CurrentValue = false,
    Flag = "Toggle1",
    Callback = function(Value)
-  espitems = Value
-         if not Value then
-for _, item in ipairs(game.workspace.DroppedTools:GetChildren()) do
+      espitems = Value
+      if not Value then
+         for _, item in ipairs(game.workspace.DroppedTools:GetChildren()) do
             if item:FindFirstChild("ESP") then
-item:FindFirstChild("ESP"):Destroy()
-               end
+               item:FindFirstChild("ESP"):Destroy()
+            end
          end
+      end
    end,
 })
