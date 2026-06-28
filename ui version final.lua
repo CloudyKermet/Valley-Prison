@@ -75,9 +75,9 @@ for _, guns in ipairs(game.Players.LocalPlayer.Character:GetChildren()) do
 if guns:IsA("Tool") then
 for _, gconfigf in ipairs(guns:GetChildren()) do
 if gconfigf.Name == "LocalConfig" then
-gconfigf:FindFirstChild("Configuration"):FindFirstChild("Accuracy").Value = 0, 0, 0
-gconfigf:FindFirstChild("Configuration"):FindFirstChild("RecoilMax").Value = 0, 0, 0
-gconfigf:FindFirstChild("Configuration"):FindFirstChild("RecoilMin").Value = 0, 0, 0                     
+gconfigf:FindFirstChild("Configuration"):FindFirstChild("Accuracy").Value = Vector3.new(0, 0, 0)
+gconfigf:FindFirstChild("Configuration"):FindFirstChild("RecoilMax").Value = Vector3.new(0, 0, 0)
+gconfigf:FindFirstChild("Configuration"):FindFirstChild("RecoilMin").Value = Vector3.new(0, 0, 0)                   
                   end
                end
             end
