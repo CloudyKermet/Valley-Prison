@@ -43,7 +43,7 @@ local antirecoil = false
 local alwayssprint = false
 local infstamina = false
 local showrope = false
-local espitems
+local espitems = false
 
 local itemesp = Instance.new("Highlight")
 itemesp.Name = "ESP"
