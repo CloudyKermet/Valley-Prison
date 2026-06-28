@@ -43,6 +43,13 @@ local antirecoil = false
 local alwayssprint = false
 local infstamina = false
 local showrope = false
+local espitems
+
+local itemesp = Instance.new("Highlight")
+itemesp.Name = "ESP"
+itemesp.FillTransparency = 1
+itemesp.OutlineTransparency = 0
+itemesp.OutlineColor = Color3.fromRGB(255, 255, 255)
 
 RunService.Heartbeat:Connect(function()
     if antitase then
@@ -175,7 +182,6 @@ end)
 RunService.RenderStepped:Connect(function()
     if not aimlock or not HoldingTrigger then
         Target = nil
-        return
     end
 
     if not Target or not Target.Parent or (Target.Parent:FindFirstChild("Humanoid") and Target.Parent.Humanoid.Health <= 0) then
@@ -200,6 +206,18 @@ rope:FindFirstChild("Rope").Transparency = 0
 rope:FindFirstChild("Truss").CanCollide = true               
             end
          end
+      end
+
+      if espitems then
+for _, items in ipairs(game.workspace.DroppedTools:GetChildren()) do
+            if not items:FindFirstChild("ESP") then
+local itesp = itemesp:Clone()
+            itesp.Parent = items
+            itesp.OutlineColor = Color3.fromRGB(135, 206, 235)
+         end
+      end
+      else
+         items:FindFirstChild("ESP"):Destroy()
       end
 end)
 
@@ -271,5 +289,14 @@ local tgl7 = Tab4:CreateToggle({
    Flag = "Toggle1",
    Callback = function(Value)
   showrope = Value
+   end,
+})
+
+local tgl8 = Tab2:CreateToggle({
+   Name = "Esp Items",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(Value)
+  espitems = Value
    end,
 })
