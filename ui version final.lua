@@ -77,7 +77,8 @@ for _, gconfigf in ipairs(guns:GetChildren()) do
 if gconfigf.Name == "LocalConfig" then
 gconfigf:FindFirstChild("Configuration"):FindFirstChild("Accuracy").Value = Vector3.new(0, 0, 0)
 gconfigf:FindFirstChild("Configuration"):FindFirstChild("RecoilMax").Value = Vector3.new(0, 0, 0)
-gconfigf:FindFirstChild("Configuration"):FindFirstChild("RecoilMin").Value = Vector3.new(0, 0, 0)                   
+gconfigf:FindFirstChild("Configuration"):FindFirstChild("RecoilMin").Value = Vector3.new(0, 0, 0)
+gconfigf:FindFirstChild("Configuration"):FindFirstChild("MaximumRange").Value = 99999                     
                   end
                end
             end
