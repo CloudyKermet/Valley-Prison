@@ -118,6 +118,27 @@ game.Players.LocalPlayer.Character:WaitForChild("Humanoid").WalkSpeed = 20
 if infstamina then
 game:GetService("Players").LocalPlayer.ServerVariables.Sprint.Stamina.Value = 100
       end
+
+      if showrope then
+for _, rope in ipairs(workspace.Map.Functional.Ropes:GetChildren()) do
+if rope.Name == "Rope" then
+rope:FindFirstChild("Rope").Transparency = 0
+rope:FindFirstChild("Truss").CanCollide = true               
+            end
+         end
+      end
+
+      if espitems then
+for _, items in ipairs(game.workspace.DroppedTools:GetChildren()) do
+            if not items:FindFirstChild("ESP") then
+local itesp = itemesp:Clone()
+            itesp.Parent = items
+            itesp.OutlineColor = Color3.fromRGB(135, 206, 235)
+         end
+      end
+      else
+         items:FindFirstChild("ESP"):Destroy()
+      end
 end)
 
 -- Re-apply on respawn
@@ -182,6 +203,7 @@ end)
 RunService.RenderStepped:Connect(function()
     if not aimlock or not HoldingTrigger then
         Target = nil
+         return
     end
 
     if not Target or not Target.Parent or (Target.Parent:FindFirstChild("Humanoid") and Target.Parent.Humanoid.Health <= 0) then
@@ -198,27 +220,7 @@ RunService.RenderStepped:Connect(function()
                 Camera.CFrame = Camera.CFrame:Lerp(newCFrame, smoothness)
             end
         end
-    end
-      if showrope then
-for _, rope in ipairs(workspace.Map.Functional.Ropes:GetChildren()) do
-if rope.Name == "Rope" then
-rope:FindFirstChild("Rope").Transparency = 0
-rope:FindFirstChild("Truss").CanCollide = true               
-            end
-         end
-      end
-
-      if espitems then
-for _, items in ipairs(game.workspace.DroppedTools:GetChildren()) do
-            if not items:FindFirstChild("ESP") then
-local itesp = itemesp:Clone()
-            itesp.Parent = items
-            itesp.OutlineColor = Color3.fromRGB(135, 206, 235)
-         end
-      end
-      else
-         items:FindFirstChild("ESP"):Destroy()
-      end
+    end 
 end)
 
 local Tab1 = Window:CreateTab("Combat", 4483362458)
