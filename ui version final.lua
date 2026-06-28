@@ -27,7 +27,7 @@ local alwayssprint = false
 local infstamina = false
 
 RunService.Heartbeat:Connect(function()
-    if not antitase then return end
+    if antitase then
     
     if not character or not character.Parent then return end
     if not humanoid then 
@@ -71,6 +71,7 @@ RunService.Heartbeat:Connect(function()
 
     local ragdolledVal = character:FindFirstChild("Ragdolled") or script:FindFirstChild("Ragdolled")
     if ragdolledVal then ragdolledVal.Value = false end
+      end
 
       if antirecoil then
 for _, guns in ipairs(game.Players.LocalPlayer.Character:GetChildren()) do
