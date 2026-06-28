@@ -21,7 +21,8 @@ Discord = {
    }
 })
 
-local antitase = false  -- Toggle this to false to disable
+local antitase = false
+local antirecoil = false
 
 RunService.Heartbeat:Connect(function()
     if not antitase then return end
@@ -68,6 +69,20 @@ RunService.Heartbeat:Connect(function()
 
     local ragdolledVal = character:FindFirstChild("Ragdolled") or script:FindFirstChild("Ragdolled")
     if ragdolledVal then ragdolledVal.Value = false end
+
+      if antirecoil then
+for _, guns in ipairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if guns:IsA("Tool") then
+for _, gconfigf in ipairs(guns:GetChildren()) do
+if gconfigf.Name == "LocalConfig" then
+gconfigf:FindFirstChild("Configuration"):FindFirstChild("Accuracy").Value = 0, 0, 0
+gconfigf:FindFirstChild("Configuration"):FindFirstChild("RecoilMax").Value = 0, 0, 0
+gconfigf:FindFirstChild("Configuration"):FindFirstChild("RecoilMin").Value = 0, 0, 0                     
+                  end
+               end
+            end
+         end
+      end
 end)
 
 -- Re-apply on respawn
