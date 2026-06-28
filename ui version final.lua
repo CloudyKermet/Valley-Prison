@@ -42,7 +42,7 @@ local antitase = false
 local antirecoil = false
 local alwayssprint = false
 local infstamina = false
-local showropes = false
+local showrope = false
 
 RunService.Heartbeat:Connect(function()
     if antitase then
@@ -193,7 +193,7 @@ RunService.RenderStepped:Connect(function()
             end
         end
     end
-      if showropes then
+      if showrope then
 for _, rope in ipairs(workspace.Map.Functional.Ropes:GetChildren()) do
 if rope.Name == "Rope" then
 rope:FindFirstChild("Rope").Transparency = 0
@@ -270,6 +270,6 @@ local tgl7 = Tab4:CreateToggle({
    CurrentValue = false,
    Flag = "Toggle1",
    Callback = function(Value)
-  showropes = Value
+  showrope = Value
    end,
 })
