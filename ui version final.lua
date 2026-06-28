@@ -122,7 +122,7 @@ game:GetService("Players").LocalPlayer.ServerVariables.Sprint.Stamina.Value = 10
       if showrope then
 for _, rope in ipairs(workspace.Map.Functional.Ropes:GetChildren()) do
 if rope.Name == "Rope" then
-rope:FindFirstChild("Rope").Transparency = 0
+rope:FindFirstChild("Rope").Transparency = 0.4
 rope:FindFirstChild("Truss").CanCollide = true               
             end
          end
@@ -291,6 +291,14 @@ local tgl7 = Tab4:CreateToggle({
    Flag = "Toggle1",
    Callback = function(Value)
   showrope = Value
+         if not Value then
+for _, rope in ipairs(workspace.Map.Functional.Ropes:GetChildren()) do
+if rope.Name == "Rope" then
+rope:FindFirstChild("Rope").Transparency = 1
+rope:FindFirstChild("Truss").CanCollide = false               
+            end
+         end
+      end
    end,
 })
 
@@ -300,5 +308,11 @@ local tgl8 = Tab2:CreateToggle({
    Flag = "Toggle1",
    Callback = function(Value)
   espitems = Value
+         if not Value then
+for _, item in ipairs(game.workspace.DroppedTools:GetChildren()) do
+            if item:FindFirstChild("ESP") then
+item:FindFirstChild("ESP"):Destroy()
+               end
+         end
    end,
 })
