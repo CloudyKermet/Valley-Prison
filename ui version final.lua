@@ -5,6 +5,23 @@ local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
 local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
+--aimbot variables--
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Camera = workspace.CurrentCamera
+local LocalPlayer = Players.LocalPlayer
+
+local aimlock = false
+local teamcheck = true
+local wallcheck = false
+local aimpart = "Head"
+local smoothness = 0
+
+local Target = nil
+local HoldingTrigger = false
+local OriginalCameraType = Camera.CameraType
+
 
 local Window = Rayfield:CreateWindow({
    Name = "Valley Prison",
@@ -101,7 +118,84 @@ player.CharacterAdded:Connect(function(newChar)
     humanoid = newChar:WaitForChild("Humanoid")
 end)
 
+local function IsVisible(targetPart)
+    if not wallcheck then return true end
+    local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    if not root then return false end
+    local ray = Ray.new(root.Position, (targetPart.Position - root.Position))
+    local hit = workspace:FindPartOnRayWithIgnoreList(ray, {LocalPlayer.Character})
+    return hit == nil or hit:IsDescendantOf(targetPart.Parent)
+end
+
+local function GetClosestToCenter()
+    local closest = nil
+    local closestDist = 9999
+    local screenCenter = Camera.ViewportSize / 2
+
+    for _, plr in ipairs(Players:GetPlayers()) do
+        if plr ~= LocalPlayer and plr.Character then
+            local char = plr.Character
+            local hum = char:FindFirstChild("Humanoid")
+            local part = char:FindFirstChild(aimpart)
+            
+            if hum and hum.Health > 0 and part then
+                if teamcheck and plr.Team == LocalPlayer.Team then continue end
+                if not IsVisible(part) then continue end
+                
+                local pos, onScreen = Camera:WorldToViewportPoint(part.Position)
+                if onScreen then
+                    local dist = (Vector2.new(pos.X, pos.Y) - screenCenter).Magnitude
+                    if dist < closestDist then
+                        closestDist = dist
+                        closest = part
+                    end
+                end
+            end
+        end
+    end
+    return closest
+end
+
+UserInputService.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Gamepad1 and input.KeyCode == Enum.KeyCode.ButtonL2 then
+        HoldingTrigger = true
+        OriginalCameraType = Camera.CameraType
+    end
+end)
+
+UserInputService.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Gamepad1 and input.KeyCode == Enum.KeyCode.ButtonL2 then
+        HoldingTrigger = false
+        Target = nil
+        Camera.CameraType = OriginalCameraType
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    if not aimlock or not HoldingTrigger then
+        Target = nil
+        return
+    end
+
+    if not Target or not Target.Parent or (Target.Parent:FindFirstChild("Humanoid") and Target.Parent.Humanoid.Health <= 0) then
+        Target = GetClosestToCenter()
+    end
+
+    if Target then
+        local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if root then
+            local newCFrame = CFrame.new(Camera.CFrame.Position, Target.Position)
+            if smoothness <= 0 then
+                Camera.CFrame = newCFrame
+            else
+                Camera.CFrame = Camera.CFrame:Lerp(newCFrame, smoothness)
+            end
+        end
+    end
+end)
+
 local Tab1 = Window:CreateTab("Main", 4483362458)
+local Tab2 = Window:CreateTab("Aimbot", 4483362458)
 
 local tgl1 = Tab1:CreateToggle({
    Name = "Anti Tase",
@@ -139,5 +233,23 @@ local tgl4 = Tab1:CreateToggle({
    Flag = "Toggle1",
    Callback = function(Value)
   infstamina = Value
+   end,
+})
+
+local tgl5 = Tab2:CreateToggle({
+   Name = "Aimlock",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(Value)
+  aimlock = Value
+   end,
+})
+
+local tgl6 = Tab2:CreateToggle({
+   Name = "WallCheck",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(Value)
+  wallcheck = Value
    end,
 })
