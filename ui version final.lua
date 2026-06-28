@@ -23,6 +23,8 @@ Discord = {
 
 local antitase = false
 local antirecoil = false
+local alwayssprint = false
+local infstamina = false
 
 RunService.Heartbeat:Connect(function()
     if not antitase then return end
@@ -84,6 +86,12 @@ gconfigf:FindFirstChild("Configuration"):FindFirstChild("MaximumRange").Value = 
             end
          end
       end
+if alwayssprint then
+humanoid.WalkSpeed = 20
+      end
+if infstamina then
+game:GetService("Players").LocalPlayer.ServerVariables.Sprint.Stamina.Value = 100
+      end
 end)
 
 -- Re-apply on respawn
@@ -109,5 +117,26 @@ local tgl2 = Tab1:CreateToggle({
    Flag = "Toggle1",
    Callback = function(Value)
   antirecoil = Value
+   end,
+})
+
+local tgl3 = Tab1:CreateToggle({
+   Name = "Always Sprint",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(Value)
+  alwayssprint = Value
+         if not Value then
+humanoid.WalkSpeed = 14
+         end
+   end,
+})
+
+local tgl4 = Tab1:CreateToggle({
+   Name = "Inf Stamina",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(Value)
+  infstamina = Value
    end,
 })
