@@ -101,3 +101,12 @@ local tgl1 = Tab1:CreateToggle({
   antitase = Value
    end,
 })
+
+local tgl2 = Tab1:CreateToggle({
+   Name = "Anti Recoil",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(Value)
+  antirecoil = Value
+   end,
+})
