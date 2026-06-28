@@ -87,7 +87,7 @@ gconfigf:FindFirstChild("Configuration"):FindFirstChild("MaximumRange").Value = 
          end
       end
 if alwayssprint then
-humanoid.WalkSpeed = 20
+game.Players.LocalPlayer.Character:WaitForChild("Humanoid").WalkSpeed = 20
       end
 if infstamina then
 game:GetService("Players").LocalPlayer.ServerVariables.Sprint.Stamina.Value = 100
@@ -127,7 +127,7 @@ local tgl3 = Tab1:CreateToggle({
    Callback = function(Value)
   alwayssprint = Value
          if not Value then
-humanoid.WalkSpeed = 14
+game.Players.LocalPlayer.Character:WaitForChild("Humanoid").WalkSpeed = 14
          end
    end,
 })
