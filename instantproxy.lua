@@ -4,6 +4,7 @@ vesp.FillTransparency = 1
 vesp.OutlineTransparency = 0
 vesp.OutlineColor = Color3.fromRGB(255, 255, 255)
 
+while true do
 for _, bin in ipairs(workspace.Map.Functional.Storages.Searchable:GetChildren()) do
 if bin.Name == "Bin" then
         for _, prox in ipairs(bin:GetChildren()) do
@@ -20,4 +21,6 @@ end
             end
         end
   end
+end
+        wait(0.1)
 end
