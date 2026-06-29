@@ -5,6 +5,7 @@ ScreenGui.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Enabled = false
 
 -- Main Frame
 local View = Instance.new("Frame")
