@@ -1,0 +1,80 @@
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ViewUi"
+ScreenGui.IgnoreGuiInset = true
+ScreenGui.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+
+-- Main Frame
+local View = Instance.new("Frame")
+View.Name = "View"
+View.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
+View.Size = UDim2.new(0, 334, 0, 234)
+View.Position = UDim2.new(0, 202, 0, 84)
+View.BorderSizePixel = 0
+View.Parent = ScreenGui
+
+local UICorner_View = Instance.new("UICorner")
+UICorner_View.Parent = View
+
+-- Scrolling Frame (for list on the right)
+local ScrollingFrame = Instance.new("ScrollingFrame")
+ScrollingFrame.BackgroundTransparency = 1
+ScrollingFrame.BorderSizePixel = 0
+ScrollingFrame.Size = UDim2.new(0, 120, 0, 226)
+ScrollingFrame.Position = UDim2.new(0, 202, 0, 4)
+ScrollingFrame.Parent = View
+
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+UIListLayout.Padding = UDim.new(0, 1)
+UIListLayout.Parent = ScrollingFrame
+
+-- Name Label
+local NameLabel = Instance.new("TextLabel")
+NameLabel.Name = "NameLabel"
+NameLabel.TextWrapped = true
+NameLabel.TextScaled = true
+NameLabel.BackgroundTransparency = 1
+NameLabel.TextColor3 = Color3.fromRGB(155, 168, 234)
+NameLabel.Size = UDim2.new(0, 114, 0, 22)
+NameLabel.Position = UDim2.new(0, 10, 0, 6)
+NameLabel.Parent = View
+
+-- Level Label
+local LevelLabel = Instance.new("TextLabel")
+LevelLabel.Name = "LevelLabel"
+LevelLabel.TextWrapped = true
+LevelLabel.TextScaled = true
+LevelLabel.BackgroundTransparency = 1
+LevelLabel.TextColor3 = Color3.fromRGB(155, 168, 234)
+LevelLabel.Size = UDim2.new(0, 114, 0, 22)
+LevelLabel.Position = UDim2.new(0, 10, 0, 32)
+LevelLabel.Parent = View
+
+-- Safe Label
+local SafeLabel = Instance.new("TextLabel")
+SafeLabel.Name = "SafeLabel"
+SafeLabel.TextWrapped = true
+SafeLabel.TextScaled = true
+SafeLabel.BackgroundTransparency = 1
+SafeLabel.TextColor3 = Color3.fromRGB(155, 168, 234)
+SafeLabel.Size = UDim2.new(0, 114, 0, 22)
+SafeLabel.Position = UDim2.new(0, 10, 0, 58)
+SafeLabel.Parent = View
+
+-- Close Button
+local CloseButton = Instance.new("TextButton")
+CloseButton.Name = "CloseButton"
+CloseButton.Text = "Close"
+CloseButton.TextWrapped = true
+CloseButton.TextScaled = true
+CloseButton.BackgroundColor3 = Color3.fromRGB(83, 83, 83)
+CloseButton.Size = UDim2.new(0, 66, 0, 22)
+CloseButton.Position = UDim2.new(0, 130, 0, 8)
+CloseButton.BorderSizePixel = 0
+CloseButton.Parent = View
+
+local UICorner_Close = Instance.new("UICorner")
+UICorner_Close.Parent = CloseButton
