@@ -7,12 +7,13 @@ local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
 firesignal(game:GetService("ReplicatedStorage").Hints.Remote.OnClientEvent, "Vortex Loaded")
 
+RunService.Heartbeat:Connect(function()
 game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TitleShadow.Text = "Vortex"
 game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TitleShadow.GameName.Text = "Vortex"
 game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TitleShadow.GameName.TextColor3 = Color3.fromRGB(137, 207, 240)
 game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TipShadow.Tip.Text = "By KermetDevelopment"
 game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TipShadow.Text = "By KermetDevelopment"
-
+   end)
 
 
 --aimbot variables--
