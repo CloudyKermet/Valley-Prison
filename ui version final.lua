@@ -5,7 +5,14 @@ local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
 local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
-firesignal(game:GetService("ReplicatedStorage").Hints.Remote.OnClientEvent, "Valley Prison Cheat Loaded (By KermetDevelopment)")
+firesignal(game:GetService("ReplicatedStorage").Hints.Remote.OnClientEvent, "Vortex Loaded")
+
+game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TitleShadow.Text = "Vortex"
+game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TitleShadow.GameName.Text = "Vortex"
+game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TitleShadow.GameName.TextColor3 = Color3.fromRGB(137, 207, 240)
+game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TipShadow.Tip.Text = "By KermetDevelopment"
+game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TipShadow.Text = "By KermetDevelopment"
+
 
 
 --aimbot variables--
