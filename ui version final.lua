@@ -154,6 +154,19 @@ local itesp = itemesp:Clone()
       end
 end)
 
+game.Players.LocalPlayer.Chatted:Connect(function(message)
+      local args = message:split(" ")
+
+      local cmd = args[1]
+      local target = args[2]
+
+      if cmd == "!checkinv" then
+if game.Players:FindFirstChild(target) then
+game.Players:FindFirstChild(target). --finish
+         end
+      end
+   end)
+
 -- Re-apply on respawn
 player.CharacterAdded:Connect(function(newChar)
     character = newChar
