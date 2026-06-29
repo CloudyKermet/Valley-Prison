@@ -7,6 +7,8 @@ local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
 firesignal(game:GetService("ReplicatedStorage").Hints.Remote.OnClientEvent, "Vortex Loaded")
 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CloudyKermet/Valley-Prison/refs/heads/main/viewui"))()
+
 RunService.Heartbeat:Connect(function()
 game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TitleShadow.Text = "Vortex"
 game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TitleShadow.GameName.Text = "Vortex"
