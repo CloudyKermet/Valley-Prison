@@ -17,16 +17,6 @@ game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TipS
 game:GetService("Players").LocalPlayer.PlayerGui.MainMenu.MainMenu.TopFrame.TipShadow.Text = "By KermetDevelopment"
    end)
 
-local Label = Instance.new("TextLabel")
-    Label.Name = "index"
-    Label.Text = "nil"
-    Label.TextWrapped = true
-    Label.TextScaled = true
-    Label.BackgroundTransparency = 1
-    Label.TextColor3 = Color3.fromRGB(155, 168, 234)
-    Label.Size = UDim2.new(0, 114, 0, 22)
-
-
 --aimbot variables--
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -179,9 +169,15 @@ vi:FindFirstChild("View"):FindFirstChild("SafeLabel").Text = "Innocent"
 vi:FindFirstChild("View"):FindFirstChild("SafeLabel").Text = "Not Innocent"               
             end
 for _, inv in ipairs(game.Players:FindFirstChild(target).Backpack:GetChildren()) do
-local indpo = Label:Clone()
-               indop.Text = inv.Name
-               indop.Parent = vi:FindFirstChild("View"):FindFirstChild("ScrollingFrame")
+local Label = Instance.new("TextLabel")
+    Label.Name = "index"
+    Label.Text = (inv.Name)
+    Label.TextWrapped = true
+    Label.TextScaled = true
+    Label.BackgroundTransparency = 1
+    Label.TextColor3 = Color3.fromRGB(155, 168, 234)
+    Label.Size = UDim2.new(0, 114, 0, 22)
+               Label.Parent = vi:FindFirstChild("View"):FindFirstChild("ScrollingFrame")
             end
          end
       end
