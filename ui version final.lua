@@ -174,9 +174,9 @@ vi.Enabled = true
 vi:FindFirstChild("View"):FindFirstChild("NameLabel").Text = target
 vi:FindFirstChild("View"):FindFirstChild("LevelLabel").Text = ("Level: " .. game.Players:FindFirstChild(target).ServerVariables.Experience.Level.Value)
 if game.Players:FindFirstChild(target).ServerVariables.Innocent.Value == true then
-vi:FindFirstChild("View"):FindFirstChild("SafeLable").Text = "Innocent"
+vi:FindFirstChild("View"):FindFirstChild("SafeLabel").Text = "Innocent"
             else
-vi:FindFirstChild("View"):FindFirstChild("SafeLable").Text = "Not Innocent"               
+vi:FindFirstChild("View"):FindFirstChild("SafeLabel").Text = "Not Innocent"               
             end
 for _, inv in ipairs(game.Players:FindFirstChild(target).Backpack:GetChildren()) do
 local indpo = Label:Clone()
