@@ -56,12 +56,15 @@ local alwayssprint = false
 local infstamina = false
 local showrope = false
 local espitems = false
+local gunrbg = false
 
 local itemesp = Instance.new("Highlight")
 itemesp.Name = "ESP"
 itemesp.FillTransparency = 1
 itemesp.OutlineTransparency = 0
 itemesp.OutlineColor = Color3.fromRGB(255, 255, 255)
+
+local rbgcolor = Color3.fromHSV((tick() % 6) / 6, 1, 1)
 
 RunService.Heartbeat:Connect(function()
     if antitase then
@@ -149,6 +152,24 @@ local itesp = itemesp:Clone()
          end
       end
    end
+      if gunrbg then
+for _, gun in ipairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if gun:IsA("Tool") then
+if gun:FindFirstChild("LocalConfig"):FindFirstChild("Configuration"):FindFirstChild("RecoilMax") then
+for _, meshpart in ipairs(gun:GetDescendants()) do 
+if meshpart:IsA("Mesh") then
+meshpart.Transparency = 0.9
+local guncham = itemesp:Clone()
+guncham.OutlineTransparency = 1
+guncham.FillTransparency = 0.3 
+guncham.FillColor = rgbcolor                        
+guncham.Parent = meshpart                        
+                        end
+                     end
+                  end
+               end
+            end
+      end
 end)
 
 game.Players.LocalPlayer.Chatted:Connect(function(message)
@@ -366,5 +387,14 @@ local tgl8 = Tab2:CreateToggle({
             end
          end
       end
+   end,
+})
+
+local tgl6 = Tab1:CreateToggle({
+   Name = "Gun RBG",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(Value)
+   gunrbg = Value
    end,
 })
