@@ -158,11 +158,7 @@ local itesp = itemesp:Clone()
             itesp.OutlineColor = Color3.fromRGB(135, 206, 235)
          end
       end
-      else
-         if items:FindFirstChild("ESP") then
-         items:FindFirstChild("ESP"):Destroy()
-         end
-      end
+   end
 end)
 
 game.Players.LocalPlayer.Chatted:Connect(function(message)
