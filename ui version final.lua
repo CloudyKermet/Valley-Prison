@@ -25,7 +25,6 @@ local Label = Instance.new("TextLabel")
     Label.BackgroundTransparency = 1
     Label.TextColor3 = Color3.fromRGB(155, 168, 234)
     Label.Size = UDim2.new(0, 114, 0, 22)
-    Label.Position = UDim2.new(0, 10, 0, 40) 
 
 
 --aimbot variables--
@@ -160,7 +159,9 @@ local itesp = itemesp:Clone()
          end
       end
       else
+         if items:FindFirstChild("ESP") then
          items:FindFirstChild("ESP"):Destroy()
+         end
       end
 end)
 
@@ -176,7 +177,7 @@ local vi = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):Find
 vi.Enabled = true
 vi:FindFirstChild("View"):FindFirstChild("NameLabel").Text = target
 vi:FindFirstChild("View"):FindFirstChild("LevelLabel").Text = ("Level: " .. game.Players:FindFirstChild(target).ServerVariables.Experience.Level.Value)
-if game.Players:FindFirstChild(target).ServerVariables.Innocent then
+if game.Players:FindFirstChild(target).ServerVariables.Innocent.Value == true then
 vi:FindFirstChild("View"):FindFirstChild("SafeLable").Text = "Innocent"
             else
 vi:FindFirstChild("View"):FindFirstChild("SafeLable").Text = "Not Innocent"               
