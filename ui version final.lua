@@ -162,7 +162,9 @@ game.Players.LocalPlayer.Chatted:Connect(function(message)
 
       if cmd == "!checkinv" then
 if game.Players:FindFirstChild(target) then
-game.Players:FindFirstChild(target). --finish
+local vi = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("ViewUi")
+vi:FindFirstChild("View"):FindFirstChild("NameLabel").Text = target
+vi:FindFirstChild("View"):FindFirstChild("LevelLabel").Text = game.Players:FindFirstChild(target).ServerVariables.Experience.Level.Value
          end
       end
    end)
