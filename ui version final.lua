@@ -27,6 +27,7 @@ local LocalPlayer = Players.LocalPlayer
 local aimlock = false
 local teamcheck = true
 local wallcheck = false
+local friendcheck = false
 local aimpart = "Head"
 local smoothness = 0
 
@@ -288,6 +289,23 @@ RunService.RenderStepped:Connect(function()
         end
     end 
 end)
+
+local function IsFriend(plr)
+    if not friendcheck then return false end
+    return LocalPlayer:IsFriendsWith(plr.UserId)
+end
+
+local oldGetClosest = GetClosestToCenter
+GetClosestToCenter = function()
+    local closest = oldGetClosest()
+    if closest and closest.Parent then
+        local plr = Players:GetPlayerFromCharacter(closest.Parent)
+        if plr and IsFriend(plr) then
+            return nil
+        end
+    end
+    return closest
+end
 
 local Tab1 = Window:CreateTab("Combat", 4483362458)
 local Tab2 = Window:CreateTab("Visuals", 4483362458)
