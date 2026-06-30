@@ -183,6 +183,15 @@ local Label = Instance.new("TextLabel")
       end
    end)
 
+Game.Players.LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("ViewUi").View.CloseButton.MouseButton1Click:Connect(function()
+Game.Players.LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("ViewUi").Enabled = false
+      for _, indexframe in ipairs(Game.Players.LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("ViewUi"):FindFirstChild("View"):FindFirstChild("ScrollingFrame"):GetChildren()) fo
+if indexframe.Name == "index" then
+indexframe:Destroy()
+      end
+   end
+    end)
+
 -- Re-apply on respawn
 player.CharacterAdded:Connect(function(newChar)
     character = newChar
