@@ -153,10 +153,13 @@ local itesp = itemesp:Clone()
       end
    end
       if instantprox then
-for _, bin in ipairs(workspace.Map.Functional.Storages.Searchable:GetChildren()) do
-if bin.Name == "Bin" then
-for _, prox in ipairs(bin:GetDescendants()) do
-prox:FindFirstChild("ProximityPrompt").HoldDuration = 0.01
+for _, prox in ipairs(workspace.Map.Functional.Storages.Searchable:GetDescendants()) do
+if prox:IsA("ProximityPrompt") then
+if prox:GetAttribute("Searched") == false then                 
+prox.Enabled = true
+prox.HoldDuration = 0.01
+               else
+prox.Enabled = false
                end
             end
          end
@@ -388,12 +391,11 @@ local tgl9 = Tab4:CreateToggle({
    Callback = function(Value)
    instantprox = Value
          if not Value then
-for _, bin in ipairs(workspace.Map.Functional.Storages.Searchable:GetChildren()) do
-if bin.Name == "Bin" then
-for _, prox in ipairs(bin:GetDescendants()) do
-prox:FindFirstChild("ProximityPrompt").HoldDuration = 0.01
-               end
-            end
+for _, prox in ipairs(workspace.Map.Functional.Storages.Searchable:GetDescendants()) do
+if prox:IsA("ProximityPrompt") then                 
+prox.HoldDuration = 3               
+prox.Enabled = true               
+             end
          end
       end
    end,
