@@ -56,7 +56,7 @@ local alwayssprint = false
 local infstamina = false
 local showrope = false
 local espitems = false
-local gunrbg = false
+local instantprox = false
 
 local itemesp = Instance.new("Highlight")
 itemesp.Name = "ESP"
@@ -152,21 +152,15 @@ local itesp = itemesp:Clone()
          end
       end
    end
-      if gunrbg then
-for _, gun in ipairs(game.Players.LocalPlayer.Character:GetChildren()) do
-if gun:IsA("Tool") then
-for _, meshpart in ipairs(gun:GetDescendants()) do 
-if meshpart:IsA("Mesh") then
-meshpart.Transparency = 0.9
-local guncham = itemesp:Clone()
-guncham.OutlineTransparency = 1
-guncham.FillTransparency = 0.3 
-guncham.FillColor = rgbcolor                        
-guncham.Parent = meshpart                       
-                     end
-                  end
+      if instantprox then
+for _, bin in ipairs(workspace.Map.Functional.Storages.Searchable:GetChildren()) do
+if bin.Name == "Bin" then
+for _, prox in ipairs(bin:GetChildren()) do
+local prompt = prox:FindFirstChild("ProximityPrompt")
+prompt.HoldDuration = 0.01
                end
             end
+         end
       end
 end)
 
@@ -388,11 +382,21 @@ local tgl8 = Tab2:CreateToggle({
    end,
 })
 
-local tgl9 = Tab2:CreateToggle({
-   Name = "Gun RBG",
+local tgl9 = Tab4:CreateToggle({
+   Name = "Instant Rumage",
    CurrentValue = false,
    Flag = "Toggle1",
    Callback = function(Value)
-   gunrbg = Value
+   instantprox = Value
+         if not Value then
+for _, bin in ipairs(workspace.Map.Functional.Storages.Searchable:GetChildren()) do
+if bin.Name == "Bin" then
+for _, prox in ipairs(bin:GetChildren()) do
+local prompt = prox:FindFirstChild("ProximityPrompt")
+prompt.HoldDuration = 3
+               end
+            end
+         end
+         end
    end,
 })
