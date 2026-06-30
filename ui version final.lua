@@ -163,8 +163,26 @@ game.Players.LocalPlayer.Chatted:Connect(function(message)
       if cmd == "!checkinv" then
 if game.Players:FindFirstChild(target) then
 local vi = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("ViewUi")
+vi.Enabled = true
 vi:FindFirstChild("View"):FindFirstChild("NameLabel").Text = target
-vi:FindFirstChild("View"):FindFirstChild("LevelLabel").Text = game.Players:FindFirstChild(target).ServerVariables.Experience.Level.Value
+vi:FindFirstChild("View"):FindFirstChild("LevelLabel").Text = ("Level: " .. game.Players:FindFirstChild(target).ServerVariables.Experience.Level.Value)
+if game.Players:FindFirstChild(target).ServerVariables.Innocent then
+vi:FindFirstChild("View"):FindFirstChild("SafeLable").Text = "Innocent"
+            else
+vi:FindFirstChild("View"):FindFirstChild("SafeLable").Text = "Not Innocent"               
+            end
+for _, inv in ipairs(game.Players:FindFirstChild(target).Backpack:GetChildren()) do
+local Label = Instance.new("TextLabel")
+    Label.Name = "index"
+    Label.Text = inv.Name
+    Label.TextWrapped = true
+    Label.TextScaled = true
+    Label.BackgroundTransparency = 1
+    Label.TextColor3 = Color3.fromRGB(155, 168, 234)
+    Label.Size = UDim2.new(0, 114, 0, 22)
+    Label.Position = UDim2.new(0, 10, 0, 40) -- adjust as needed
+    Label.Parent = vi:FindFirstChild("View"):FindFirstChild("ScrollingFrame")
+            end
          end
       end
    end)
