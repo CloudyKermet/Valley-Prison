@@ -390,7 +390,7 @@ local tgl8 = Tab2:CreateToggle({
    end,
 })
 
-local tgl6 = Tab1:CreateToggle({
+local tgl9 = Tab2:CreateToggle({
    Name = "Gun RBG",
    CurrentValue = false,
    Flag = "Toggle1",
