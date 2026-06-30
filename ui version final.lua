@@ -155,9 +155,8 @@ local itesp = itemesp:Clone()
       if instantprox then
 for _, bin in ipairs(workspace.Map.Functional.Storages.Searchable:GetChildren()) do
 if bin.Name == "Bin" then
-for _, prox in ipairs(bin:GetChildren()) do
-local prompt = prox:FindFirstChild("ProximityPrompt")
-prompt.HoldDuration = 0.01
+for _, prox in ipairs(bin:GetDescendants()) do
+prox:FindFirstChild("ProximityPrompt").HoldDuration = 0.01
                end
             end
          end
@@ -391,12 +390,11 @@ local tgl9 = Tab4:CreateToggle({
          if not Value then
 for _, bin in ipairs(workspace.Map.Functional.Storages.Searchable:GetChildren()) do
 if bin.Name == "Bin" then
-for _, prox in ipairs(bin:GetChildren()) do
-local prompt = prox:FindFirstChild("ProximityPrompt")
-prompt.HoldDuration = 3
+for _, prox in ipairs(bin:GetDescendants()) do
+prox:FindFirstChild("ProximityPrompt").HoldDuration = 0.01
                end
             end
          end
-         end
+      end
    end,
 })
