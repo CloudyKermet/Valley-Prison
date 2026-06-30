@@ -190,7 +190,6 @@ if indexframe.Name == "index" then
 indexframe:Destroy()
       end
    end
-    end)
 
 -- Re-apply on respawn
 player.CharacterAdded:Connect(function(newChar)
